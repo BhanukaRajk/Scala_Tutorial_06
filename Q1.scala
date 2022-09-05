@@ -2,31 +2,40 @@
 object Q1 {
     // Starting point
     def main(args: Array[String]) = {
-
-        var ALPHABET = Array("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
-
-        // Get the ending value
-        print("Enter ending value: " );
-        var n = scala.io.StdIn.readInt();
-        
-        // Validate input
-        while(n <= 0) {
-            println("Please enter valid value!");
-            print("Enter ending value: " );
-            n = scala.io.StdIn.readInt();
-        }
-    
-        // Display the output
-        println("Fibonacci sequence for " + n + ": " + Fibonacci(n));
+        println(Encryption("viraj",5));
+        println(Decryption("anwfo",5));
     }
 
-    // Function to calculate value
+    // Encrypting function
     def Encryption(PlainText: String, Shift :Int): String = {
-        
+        var EncryptText = "";
+
+        for (character <- PlainText)
+            yield if(character.toInt >= 97 && character.toInt <= 122) {
+                        EncryptText += ((((character.toInt)+26-97+Shift)%26)+97).toChar;
+                    } else if(character.toInt >= 65 && character.toInt <= 90) {
+                        EncryptText += ((((character.toInt)+26-65+Shift)%26)+65).toChar;
+                    } else {
+                        EncryptText += character;
+                    }
+
+        return EncryptText;
     }
 
-    def Decryption(HiddenText: String, Shift :Int): String = {
-        
+    // Decrypting function
+    def Decryption(EncryptText: String, Shift :Int): String = {
+        var PlainText = "";
+
+        for (character <- EncryptText)
+            yield if(character.toInt >= 97 && character.toInt <= 122) {
+                        PlainText += ((((character.toInt)+26-97-Shift)%26)+97).toChar;
+                    } else if(character.toInt >= 65 && character.toInt <= 90) {
+                        PlainText += ((((character.toInt)+26-65-Shift)%26)+65).toChar;
+                    } else {
+                        PlainText += character;
+                    }
+
+        return PlainText;
     }
-    
+
 }
