@@ -2,8 +2,8 @@
 object Q1 {
     // Starting point
     def main(args: Array[String]) = {
-        println(Encryption("viraj",5));
-        println(Decryption("anwfo",5));
+        println(Encryption("#Visit Sri Lanka",5));
+        println(Decryption("Gjfzyd tk Htqtrgt",5));
     }
 
     // Encrypting function
@@ -12,9 +12,9 @@ object Q1 {
 
         for (character <- PlainText)
             yield if(character.toInt >= 97 && character.toInt <= 122) {
-                        EncryptText += ((((character.toInt)+26-97+Shift)%26)+97).toChar;
+                        EncryptText += ((((character.toInt) + 26 - 97 + Shift) % 26) + 97).toChar;
                     } else if(character.toInt >= 65 && character.toInt <= 90) {
-                        EncryptText += ((((character.toInt)+26-65+Shift)%26)+65).toChar;
+                        EncryptText += ((((character.toInt) + 26 - 65 + Shift) % 26) + 65).toChar;
                     } else {
                         EncryptText += character;
                     }
@@ -28,9 +28,9 @@ object Q1 {
 
         for (character <- EncryptText)
             yield if(character.toInt >= 97 && character.toInt <= 122) {
-                        PlainText += ((((character.toInt)+26-97-Shift)%26)+97).toChar;
+                        PlainText += ((((character.toInt) + 26 - 97 - Shift) % 26) + 97).toChar;
                     } else if(character.toInt >= 65 && character.toInt <= 90) {
-                        PlainText += ((((character.toInt)+26-65-Shift)%26)+65).toChar;
+                        PlainText += ((((character.toInt) + 26 - 65 - Shift) % 26) + 65).toChar;
                     } else {
                         PlainText += character;
                     }
